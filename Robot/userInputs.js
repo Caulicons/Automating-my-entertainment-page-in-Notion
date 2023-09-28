@@ -15,18 +15,23 @@ export default async function userInputs() {
       console.log('Oh... It\'s ok...');
       return
     }
-    
+
     console.log('Great, let\'s go!');
   }
 
-  const userInput = readline.question(chalk.green(`What is the name of what your want watch ${'?'.repeat(interrogationLength)} `))
+  const mediaTypes = ['Manga', 'Movie', 'Series', 'Anime']
+  let name = ''
+  let type = ''
 
-  if (userInput.length === 0 && interrogationLength < 11) {
-    interrogationLength++
-    return userInputs()
+  while (type.length === 0) {
+    type = readline.keyInSelect(mediaTypes, chalk.green(`What is the media type of what your want watch ${'?'.repeat(interrogationLength)} `))
   }
 
+  while (name.length === 0) {
+    name = readline.question(chalk.green(`What is the name of what your want watch ${'?'.repeat(interrogationLength)} `))
+  }
   await file.save({
-    name: userInput
+    name,
+    type: mediaTypes[type]
   })
 }
