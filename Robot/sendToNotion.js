@@ -94,7 +94,7 @@ export default async function notionRobot() {
   /* To debugger the response   */
   //console.log('response :', newPost)
 
-  loadingSpinner.success({ text: `Everything went fine, here you URL', ${chalk.green(newPost.url)}` })
+  loadingSpinner.success({ text: `Everything went fine, here you URL : ${chalk.green(newPost.url)}` })
 }
 
 function handleMedia(content) {
@@ -106,7 +106,7 @@ function handleMedia(content) {
   ) {
 
     return {
-      database_id: '9cdab67e0a03426790ae22ce22b09be6',
+      database_id: process.env.NOTION_DATABASE_SEVENTH_ART,
       properties: {
         'When I started': { id: '%3Euip', type: 'date', date: null },
         'Where I stopped': { id: 'FaXg', type: 'rich_text', rich_text: [] },
@@ -126,7 +126,7 @@ function handleMedia(content) {
     content.type.name === 'Book'
   ) {
     return {
-      database_id: '6f42f851b4f6473c831c98e626bd8f0b',
+      database_id: process.env.NOTION_DATABASE_READING_LIST,
       properties: {
         'When I started': { id: '%3Euip', type: 'date', date: null },
         'Where I stopped': { id: 'FaXg', type: 'rich_text', rich_text: [] },
@@ -144,7 +144,7 @@ function handleMedia(content) {
     content.type.name === 'Game'
   ) {
     return {
-      database_id: '0cb5fe7fa435426f93cada2c0409d862',
+      database_id: process.env.NOTION_DATABASE_GAMES_REVIEW,
       properties: {
         Genre: { id: 'bQJB', type: 'multi_select', multi_select: content.genre },
         Publisher: { id: 'o%3Ar%7D', type: 'select', select: content.publisher },

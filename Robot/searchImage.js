@@ -6,7 +6,7 @@ const customSearch = new customSearchAPI.VERSIONS.v1()
 export default async function searchImage() {
   const content = await file.get()
 
-  const loadingSpinner = createSpinner(`Searching for image`).start();
+  const loadingSpinner = createSpinner(`Searching by image`).start();
   const image = await fetchGoogleAndReturnImageLink(content)
   await saveImage(image)
 

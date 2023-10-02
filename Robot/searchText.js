@@ -12,7 +12,7 @@ const openai = new OpenAI({
 export default async function searchText() {
   const content = await file.get();
 
-  const loadingSpinner = createSpinner(`Searching some info ${content.name}`).start();
+  const loadingSpinner = createSpinner(`Searching some info about ${content.name} - ${content.type}`).start();
   await startTextBot(content);
 
   async function startTextBot(content) {
